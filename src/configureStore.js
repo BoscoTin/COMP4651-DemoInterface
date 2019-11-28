@@ -2,12 +2,18 @@
 import { createBrowserHistory } from 'history'
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 import { routerMiddleware, connectRouter } from 'connected-react-router'
+import apiMiddleware from './API/APIMiddleware';
+import createRootReducer from './reducers'
+
+const logger = store => next => action => {
+  console.log('dispatching', action)
+  const result = next(action)
+  console.log('next state', store.getState())
+  return result;
+}
 
 export const history = createBrowserHistory()
 
-const createRootReducer = (history) => combineReducers({
-  router: connectRouter(history),
-})
 
 export default function configureStore(preloadedState) {
   const store = createStore(
@@ -15,8 +21,9 @@ export default function configureStore(preloadedState) {
     preloadedState,
     compose(
       applyMiddleware(
+        logger, //for debug
         routerMiddleware(history), // for dispatching history actions
-        // ... other middlewares ...
+        apiMiddleware
       ),
     ),
   )

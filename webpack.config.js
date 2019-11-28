@@ -1,4 +1,11 @@
 const path = require('path');
+
+function url_domain(data) {
+  var    a      = document.createElement('a');
+         a.href = data;
+  return a.hostname;
+}
+
 module.exports = {
     //如果有一個以上的檔案需要打包，可以傳陣列給entry
     entry: ['./src/index.jsx'],
@@ -19,13 +26,18 @@ module.exports = {
                    presets: ['@babel/preset-react']
                  }
               }
-            }
+            },
+            {
+              test: /\.css$/i,
+              use: ['style-loader', 'css-loader'],
+            },
         ]
     },
     //增加一個給devserver的設定
     devServer: {
         //指定開啟port為9000
         contentBase: path.join(__dirname, 'public'),
-        port: 9000
+        port: 9000,
+        historyApiFallback: true
     }
 };

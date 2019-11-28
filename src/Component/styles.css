@@ -1,0 +1,14 @@
+.main_root{
+  display: flex;
+  flex-direction: column;
+}
+
+.main_content{
+  flex-grow: 1;
+  padding: 24px;
+}
+
+
+.expand_width{
+  flex-grow: 1;
+}
