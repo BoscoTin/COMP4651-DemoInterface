@@ -38,6 +38,7 @@ module.exports = {
         //指定開啟port為9000
         contentBase: path.join(__dirname, 'public'),
         port: 9000,
-        historyApiFallback: true
+        historyApiFallback: true,
+        open: true
     }
 };
