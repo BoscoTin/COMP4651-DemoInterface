@@ -5,12 +5,36 @@
 }
 
 .main_content{
+  height: 100%;
   flex: 1;
   padding: 24px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.75);
+  color: rgba(255, 255, 255, 1);
 }
 
 
 .expand_width{
   flex-grow: 1;
+}
+
+
+.chatroom {
+  height: 100%;
+  flex: 1;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px #FFFFFF solid
+}
+
+
+.main_content .mainpage {
+  height: 100%;
+}
+
+.mainpage .row{
+  height: 100%;
+}
+
+.mainpage .row .col{
+  height: 100%;
 }
