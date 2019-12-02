@@ -22,9 +22,16 @@ module.exports = {
               exclude: /node_modules/,
               use: {
                 loader: 'babel-loader',
-                 options: {
-                   presets: ['@babel/preset-react']
-                 }
+                options: {
+                  presets: ['@babel/preset-env',
+                    '@babel/preset-react',
+                    {
+                      'plugins': [
+                        '@babel/plugin-proposal-class-properties'
+                      ]
+                    }
+                  ]
+                }
               }
             },
             {
@@ -38,6 +45,7 @@ module.exports = {
         //指定開啟port為9000
         contentBase: path.join(__dirname, 'public'),
         port: 9000,
-        historyApiFallback: true
+        historyApiFallback: true,
+        open: true
     }
 };

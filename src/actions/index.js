@@ -1,9 +1,15 @@
 import * as apiActions from './api';
-
 import {types as apiTypes} from './api';
+
+import * as chatActions from './chat';
+import {types as chatTypes} from './chat';
+
 
 export const APITypes = apiTypes;
 export const APIActions = apiActions;
+
+export const ChatTypes = chatTypes;
+export const ChatActions = chatActions;
 
 
 // rootest of roots, init types

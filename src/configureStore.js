@@ -16,9 +16,25 @@ export const history = createBrowserHistory()
 
 
 export default function configureStore(preloadedState) {
+
+  const initialState = {
+    chat: {
+      messages: [
+        {
+          content: "Hi",
+          user: true
+        },
+        {
+          content: "Bye",
+          user: false
+        }
+      ]
+    }
+  }
+
   const store = createStore(
     createRootReducer(history), // root reducer with router state
-    preloadedState,
+    initialState,
     compose(
       applyMiddleware(
         logger, //for debug
