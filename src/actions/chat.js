@@ -19,13 +19,14 @@ export function beginSendMessage(){
 }
 
 export function sendMessage(data){
-  return runAPI(
-    '', // path
-    '', // method
-    data,
-    sendSuccess,
-    sendFail
-  )
+  return sendSuccess(data)
+  // return runAPI(
+  //   '', // path
+  //   '', // method
+  //   data,
+  //   sendSuccess,
+  //   sendFail
+  // )
 }
 
 function sendSuccess(payload){

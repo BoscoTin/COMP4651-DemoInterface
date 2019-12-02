@@ -21,10 +21,19 @@ const InputRow = ({send}) => {
         <FormControl
           value={msg}
           onChange={(event) => setMsg(event.target.value)}
+          onKeyPress={({key}) => {
+            if(key == 'Enter'){
+              send(msg)
+              setMsg("")
+            }
+          }}
           placeholder="Enter your message here"
           />
         <InputGroup.Append>
-          <Button>
+          <Button onClick={() => {
+              send(msg)
+              setMsg("")
+            }}>
             <SendIcon />
           </Button>
         </InputGroup.Append>

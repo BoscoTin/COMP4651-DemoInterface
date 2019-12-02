@@ -14,11 +14,23 @@ const status = (state = '', action) => {
   }
 }
 
-
+const messages = (state = [], action) => {
+  switch (action.type) {
+    case types.SEND_MSG_SUCCESS:
+      var array = state.slice()
+      array.push({
+        content: action.payload.message,
+        user: true
+      })
+      return array
+    default: return state
+  }
+}
 
 
 const chatReducer = combineReducers({
-  status
+  status,
+  messages
 })
 
 export default chatReducer

@@ -23,6 +23,14 @@ class Chatroom extends React.Component{
     this.scrollToEnd()
   }
 
+  handleSendMessage = (message) => {
+    const { dispatch } = this.props
+    dispatch( ChatActions.beginSendMessage() )
+    dispatch( ChatActions.sendMessage({
+      message: message
+    }) )
+  }
+
   render(){
     const messages = this.props.messages
 
@@ -30,13 +38,15 @@ class Chatroom extends React.Component{
       <div className="chatroom">
           <ul className="messages_box">
             {messages.map( message => (
-              <Message message={message} />
+              <Message
+                message={message}
+                />
             ))}
             <div style={{ float:"left", clear: "both" }}
               ref={(el) => { this.messagesEnd = el; }}>
             </div>
           </ul>
-          <InputRow />
+          <InputRow send={this.handleSendMessage.bind(this)} />
         </div>
     )
   }
@@ -45,112 +55,7 @@ class Chatroom extends React.Component{
 
 function mapStateToProps(state) {
   return {
-    messages: [
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      },
-      {
-        content: "Hi",
-        user: true
-      },
-      {
-        content: "Bye",
-        user: false
-      }
-    ]
+    messages: state.chat.messages
   };
 }
 
