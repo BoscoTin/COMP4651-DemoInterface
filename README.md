@@ -6,7 +6,7 @@ This is the project set by one of the group in COMP4651 2019F class. Here is the
 
 ### Run Command
 
-`npm run install` - install all the dependencies
+`npm install` - install all the dependencies
 
 `npm run open` - start the website at http://localhost:9000
 
