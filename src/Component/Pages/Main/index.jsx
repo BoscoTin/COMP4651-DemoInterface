@@ -20,7 +20,7 @@ class MainPage extends React.Component{
       <div className="mainpage">
         <Row>
           <Col>
-            The chatroom is at the right.
+            The chatroom is on the right.
           </Col>
 
           <Col>
