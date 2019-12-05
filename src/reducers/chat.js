@@ -15,14 +15,25 @@ const status = (state = '', action) => {
 }
 
 const messages = (state = [], action) => {
+  var array = state.slice()
   switch (action.type) {
     case types.SEND_MSG_SUCCESS:
-      var array = state.slice()
       array.push({
-        content: action.payload.message,
+        content: action.payload,
+        user: false
+      })
+      return array
+    case types.SEND_LA:
+      array.push({
+        content: action.payload,
         user: true
       })
       return array
+    case types.SEND_MSG_FAIL:
+      array.push({
+        content: "Send to server failed. Please try again.",
+        user: false
+      })
     default: return state
   }
 }
