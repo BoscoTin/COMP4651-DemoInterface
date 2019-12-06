@@ -26,8 +26,11 @@ class Chatroom extends React.Component{
   handleSendMessage = (message) => {
     const { dispatch } = this.props
     dispatch( ChatActions.beginSendMessage() )
-    dispatch( ChatActions.addMessageInWindow(message) )
-    dispatch( ChatActions.sendMessage(message) )
+    dispatch( ChatActions.sendMessage({
+      dialogs: 'cornell',
+      level: 'word-glove',
+      sentence: message,
+    }) )
   }
 
   render(){
