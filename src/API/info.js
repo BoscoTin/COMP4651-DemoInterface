@@ -1,1 +1,1 @@
-export const domain = "http://localhost:5000/chatbot_reply"
+export const domain = "http://localhost:8080/chatbot_reply"
